@@ -1,0 +1,41 @@
+@Metadata.layer: #CORE
+@UI: { headerInfo: { typeName: 'Checkout', typeNamePlural: 'Checkouts', title: { type: #STANDARD, value: 'TransId' } } }
+annotate view ZI_SL_CHECKOUTS with {
+
+  @UI.facet: [ { id: 'CheckoutDetails', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE, label: 'Checkout Details', position: 10 } ]
+
+  @EndUserText.label: 'Transaction ID'
+  @UI: { lineItem:       [ { position: 10 }, 
+                           { type: #FOR_ACTION, dataAction: 'ReturnBook', label: 'Return Book' } ],
+         identification: [ { position: 10 }, 
+                           { type: #FOR_ACTION, dataAction: 'ReturnBook', label: 'Return Book' } ] }
+  TransId;
+
+  @EndUserText.label: 'Book ID'
+  @UI: { lineItem: [ { position: 20 } ], identification: [ { position: 20 } ] }
+  BookId;
+
+  @EndUserText.label: 'Member ID'
+  @UI: { lineItem: [ { position: 30 } ], identification: [ { position: 30 } ] }
+  MemberId;
+
+  @EndUserText.label: 'Checkout Date'
+  @UI: { lineItem: [ { position: 40 } ], identification: [ { position: 40 } ] }
+  CheckoutDate;
+
+  @EndUserText.label: 'Due Date'
+  @UI: { lineItem: [ { position: 50 } ], identification: [ { position: 50 } ] }
+  DueDate;
+
+  @EndUserText.label: 'Return Date'
+  @UI: { lineItem: [ { position: 60 } ], identification: [ { position: 60 } ] }
+  ReturnDate;
+
+  @EndUserText.label: 'Fine Amount (₹)'
+  @UI: { lineItem: [ { position: 70 } ], identification: [ { position: 70 } ] }
+  FineAmount;
+
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

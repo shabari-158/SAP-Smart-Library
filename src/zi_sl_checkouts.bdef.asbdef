@@ -1,0 +1,44 @@
+managed implementation in class zbp_i_sl_checkouts unique;
+strict ( 2 );
+with draft;
+define behavior for ZI_SL_CHECKOUTS alias Checkout
+persistent table zsl_checkouts
+draft table zsl_chk_d
+lock master
+total etag LocalLastChangedAt
+authorization master ( instance )
+etag master LocalLastChangedAt
+with additional save
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly ) CheckoutDate, DueDate, ReturnDate, FineAmount, LocalLastChangedAt;
+  field ( mandatory ) TransId, BookId, MemberId;
+
+  determination setInitialDates on modify { create; }
+  validation validateAvailability on save { create; field BookId; }
+  action ReturnBook result [1] $self;
+
+
+  draft determine action Prepare;
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+
+  mapping for zsl_checkouts
+  {
+    TransId            = trans_id;
+    BookId             = book_id;
+    MemberId           = member_id;
+    CheckoutDate       = checkout_date;
+    DueDate            = due_date;
+    ReturnDate         = return_date;
+    FineAmount         = fine_amount;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+
+
+}

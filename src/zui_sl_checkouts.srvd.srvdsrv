@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service Def for Smart Library'
+define service ZUI_SL_CHECKOUTS {
+  expose ZI_SL_CHECKOUTS as Checkout;
+  expose ZI_SL_BOOKS     as Books;
+  expose ZI_SL_MEMBERS   as Members;
+}

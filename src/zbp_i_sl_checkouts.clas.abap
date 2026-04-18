@@ -1,0 +1,5 @@
+CLASS zbp_i_sl_checkouts DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_sl_checkouts.
+ENDCLASS.
+
+CLASS zbp_i_sl_checkouts IMPLEMENTATION.
+ENDCLASS.
